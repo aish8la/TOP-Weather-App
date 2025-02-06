@@ -42,7 +42,7 @@ body {
 
 .main-section {
     background-color: #fafafa;
-    flex-grow: 5;
+    flex-grow: 3;
     display: flex;
     flex-direction: column;
 }
@@ -195,8 +195,47 @@ div.current-details-ctn .temperature {
     font-weight: 500;
 }
 
-
-
 .side-hourly-ctn {
     flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.side-hourly-ctn > div:nth-child(1) {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #010101;
+}
+
+.hourly-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 2fr);
+    gap: 10px;
+}
+
+.hourly-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-weight: 500;
+    border: 2px solid #e1e1e1;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+.hourly-card > div:nth-child(2) {
+    font-size: 1.5rem;
+}
+
+.hourly-card > div:nth-child(2)::after {
+    content: "\00B0";
+}
+
+.hourly-card > div:nth-child(3) {
+    color: #b1b1b1;
 }
