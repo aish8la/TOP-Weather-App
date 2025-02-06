@@ -18,11 +18,17 @@ body {
     align-items: center;
     height: 100vh;
     width: 100vw;
+    color: #696969;
+}
+
+.card-top {
+    color: #010101;
 }
 
 .card {
-    width: 90vw;
+    width: auto;
     height: 70vh;
+    aspect-ratio: 3.5 / 2;
     border-radius: 30px;
     display: flex;
     padding: 0px;
@@ -36,20 +42,66 @@ body {
 
 .main-section {
     background-color: #fafafa;
-    flex-grow: 3;
+    flex-grow: 5;
     display: flex;
     flex-direction: column;
 }
 
+
+
 .card-top {
     display: flex;
     justify-content: space-between;
-    flex-grow: 1;
+    align-items: center;
+    height: 15%;
 }
 
 .card-middle {
     display: flex;
-    flex-grow: 6;
+    height: 55%;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.weather-icon {
+    width: auto;
+    aspect-ratio: 1 / 1;
+}
+
+.current-details-ctn, .weather-icon {
+    height: 80%;
+}
+
+div.current-details-ctn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.current-details-ctn .temperature, .current-details-ctn > div:nth-child(2) {
+    font-size: 8rem;
+    font-weight: 400;
+    color: #33cccc;
+}
+
+.current-details-ctn > div:nth-child(2) {
+    align-self: flex-start;
+}
+
+.current-details-ctn > div:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.current-details-ctn .weather-description {
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.card-bottom {
+    height: 30%;
 }
 
 .card-side-section {
