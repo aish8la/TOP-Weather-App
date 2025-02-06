@@ -79,14 +79,16 @@ div.current-details-ctn {
     justify-content: center;
 }
 
-div.current-details-ctn .temperature, .current-details-ctn > div:nth-child(2) {
+div.current-details-ctn .temperature {
     font-size: 8rem;
     font-weight: 400;
     color: #33cccc;
+    position: relative;
 }
 
-.current-details-ctn > div:nth-child(2) {
-    align-self: flex-start;
+.current-details-ctn .temperature::after {
+    content: "\00B0";
+    position: absolute;
 }
 
 .current-details-ctn > div:nth-child(1) {
