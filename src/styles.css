@@ -54,6 +54,7 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 15%;
+    font-weight: 500;
 }
 
 .card-middle {
@@ -100,6 +101,20 @@ div.current-details-ctn .temperature {
 .current-details-ctn .weather-description {
     font-size: 2rem;
     font-weight: 400;
+}
+
+.current-parameters > div {
+    display: flex;
+    height: 2.5rem;
+    align-items: center;
+    margin-left: 2rem;
+    font-size: 1rem;
+}
+
+.current-parameters img {
+    width: 3rem;
+    height: auto;
+    aspect-ratio: 1;
 }
 
 .card-bottom {
