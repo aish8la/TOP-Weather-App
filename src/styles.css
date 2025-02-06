@@ -80,7 +80,7 @@ div.current-details-ctn {
     justify-content: center;
 }
 
-div.current-details-ctn .temperature {
+.current-details-ctn .temperature {
     font-size: 8rem;
     font-weight: 400;
     color: #33cccc;
@@ -239,4 +239,22 @@ div.current-details-ctn .temperature {
 
 .hourly-card > div:nth-child(3) {
     color: #b1b1b1;
+}
+
+body .card .skeleton {
+    animation: skeleton-loading 1s linear infinite alternate;
+    color: transparent;
+}
+
+body .card .skeleton > img {
+    visibility: hidden;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: #F5F5F5; /* FROM Color 1 */
+    }
+    100% {
+        background-color: #E2E2E2; /* TO Color 2 */
+    }
 }
