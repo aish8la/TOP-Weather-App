@@ -1,8 +1,14 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("assets/fonts/Roboto-VariableFont_wdth\,wght.ttf");
+}
+
 * {
     box-sizing: border-box;
 }
 
 body {
+    font-family: "Roboto", serif;
     padding: 0px;
     margin: 0px;
     display: flex;
@@ -19,5 +25,35 @@ body {
     height: 70vh;
     border-radius: 30px;
     display: flex;
+    padding: 0px;
+    overflow: hidden;
+}
+
+.main-section,
+.card-side-section {
+    padding: 20px 30px;
+}
+
+.main-section {
+    background-color: #fafafa;
+    flex-grow: 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.card-middle {
+    display: flex;
+    flex-grow: 6;
+}
+
+.card-side-section {
+    background-color: #f6f6f6;
+    flex-grow: 1;
 }
 
