@@ -100,7 +100,7 @@ div.current-details-ctn .temperature {
 
 .current-details-ctn .weather-description {
     font-size: 2rem;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .current-parameters > div {
@@ -119,10 +119,84 @@ div.current-details-ctn .temperature {
 
 .card-bottom {
     height: 30%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.upcoming-days-ctn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 500;
+    flex-grow: 1;
+}
+
+.upcoming-days-ctn.current {
+    border: 2px solid #e1e1e1;
+    border-radius: 20px;
+}
+
+.upcoming-days-ctn > div:nth-child(2)::after {
+    content: "\00B0";
+}
+
+.upcoming-days-ctn > div:nth-child(2) {
+    font-size: 2rem;
+}
+
+.upcoming-days-ctn > div:nth-child(3) {
+    font-weight: 400;
+    color: #b1b1b1;
 }
 
 .card-side-section {
     background-color: #f6f6f6;
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
 }
 
+.top-side {
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: #010101;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.side-current-ctn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    gap: 5px;
+}
+
+.side-current-ctn > div:nth-child(1) {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.side-current-ctn > div:nth-child(1)::after, .feels-like::after {
+    content: "\00B0";
+}
+
+.side-current-ctn > div:nth-child(3) {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+
+
+.side-hourly-ctn {
+    flex-grow: 2;
+}
