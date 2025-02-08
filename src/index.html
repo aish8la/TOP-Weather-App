@@ -1,122 +1,399 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="search-container">
-        <input type="text" placeholder="Location" id="location-input">
-        <button id="get-weather-btn">Search</button>
+      <input type="text" placeholder="Location" id="location-input" />
+      <button id="get-weather-btn">Search</button>
     </div>
     <div class="card">
-        <div class="main-section">
-            <div class="card-top">
-                <div class="location skeleton-section to-be-loaded text" data-definition="address" data-type="general"></div>
-                <div class="date skeleton-section to-be-loaded text" data-type="general" data-definition="date"></div>
-            </div>
-            <div class="card-middle">
-                <div class="weather-icon skeleton-section">
-                    <img alt="" class="to-be-loaded image" data-type="periodic" data-period-type="current" data-definition="weather-icon">
-                </div>
+      <div class="main-section">
+        <div class="card-top">
+          <div
+            class="location skeleton-section to-be-loaded text"
+            data-definition="address"
+            data-type="general"
+          ></div>
+          <div
+            class="date skeleton-section to-be-loaded text"
+            data-type="general"
+            data-definition="date"
+          ></div>
+        </div>
+        <div class="card-middle">
+          <div class="weather-icon skeleton-section">
+            <img
+              alt=""
+              class="to-be-loaded image"
+              data-type="periodic"
+              data-period-type="current"
+              data-definition="weather-icon"
+            />
+          </div>
 
-                <div class="current-details-ctn skeleton-section">
-                    <div>
-                        <div class="temperature to-be-loaded digit" data-type="periodic" data-period-type="current" data-definition="temperature"></div>
-                        <div class="weather-description to-be-loaded text" data-type="periodic" data-period-type="current" data-definition="condition"></div>
-                    </div>
-                    <div class="current-parameters skeleton-section">
-                        <div class="wind-speed">
-                            <img src="./assets/icons/windsock.svg" alt="">
-                            <div class="to-be-loaded text" data-type="periodic" data-period-type="current" data-definition="wind-speed"></div>
-                        </div>
-                        <div class="humidity">
-                            <img src="./assets/icons/humidity.svg" alt="">
-                            <div class="to-be-loaded digit" data-type="periodic" data-period-type="current" data-definition="humidity"></div>
-                        </div>
-                    </div>
-                </div>
+          <div class="current-details-ctn skeleton-section">
+            <div>
+              <div
+                class="temperature to-be-loaded digit"
+                data-type="periodic"
+                data-period-type="current"
+                data-definition="temperature"
+              ></div>
+              <div
+                class="weather-description to-be-loaded text"
+                data-type="periodic"
+                data-period-type="current"
+                data-definition="condition"
+              ></div>
             </div>
-            <div class="card-bottom skeleton-section">
-                <div class="current upcoming-days-ctn">
-                    <div class="to-be-loaded text" data-type="periodic" data-period-type="daily" data-period-index="0" data-definition="day"></div>
-                    <div class="to-be-loaded digit" data-type="periodic" data-period-type="daily" data-period-index="0" data-definition="temperature"></div>
-                    <div class="to-be-loaded text" data-type="periodic" data-period-type="daily" data-period-index="0" data-definition="condition"></div>
-                </div>
-                <div class="upcoming-days-ctn">
-                    <div class="to-be-loaded text" data-type="periodic" data-period-type="daily" data-period-index="1" data-definition="day"></div>
-                    <div class="to-be-loaded digit" data-type="periodic" data-period-type="daily" data-period-index="1" data-definition="temperature"></div>
-                    <div class="to-be-loaded text" data-type="periodic" data-period-type="daily" data-period-index="1" data-definition="condition"></div>
-                </div>
-                <div class="upcoming-days-ctn">
-                    <div class="to-be-loaded text" data-type="periodic" data-period-type="daily" data-period-index="2" data-definition="day"></div>
-                    <div class="to-be-loaded digit" data-type="periodic" data-period-type="daily" data-period-index="2" data-definition="temperature"></div>
-                    <div class="to-be-loaded text" data-type="periodic" data-period-type="daily" data-period-index="2" data-definition="condition"></div>
-                </div>
-                <div class="upcoming-days-ctn">
-                    <div class="to-be-loaded text" data-type="periodic" data-period-type="daily" data-period-index="3" data-definition="day"></div>
-                    <div class="to-be-loaded digit" data-type="periodic" data-period-type="daily" data-period-index="3" data-definition="temperature"></div>
-                    <div class="to-be-loaded text" data-type="periodic" data-period-type="daily" data-period-index="3" data-definition="condition"></div>
-                </div>
-                <div class="upcoming-days-ctn">
-                    <div class="to-be-loaded text" data-type="periodic" data-period-type="daily" data-period-index="4" data-definition="day"></div>
-                    <div class="to-be-loaded digit" data-type="periodic" data-period-type="daily" data-period-index="4" data-definition="temperature"></div>
-                    <div class="to-be-loaded text" data-type="periodic" data-period-type="daily" data-period-index="4" data-definition="condition"></div>
-                </div>
-                <div class="upcoming-days-ctn">
-                    <div class="to-be-loaded text" data-type="periodic" data-period-type="daily" data-period-index="5" data-definition="day"></div>
-                    <div class="to-be-loaded digit" data-type="periodic" data-period-type="daily" data-period-index="5" data-definition="temperature"></div>
-                    <div class="to-be-loaded text" data-type="periodic" data-period-type="daily" data-period-index="5" data-definition="condition"></div>
-                </div>
+            <div class="current-parameters skeleton-section">
+              <div class="wind-speed">
+                <img src="./assets/icons/windsock.svg" alt="" />
+                <div
+                  class="to-be-loaded text"
+                  data-type="periodic"
+                  data-period-type="current"
+                  data-definition="wind-speed"
+                ></div>
+              </div>
+              <div class="humidity">
+                <img src="./assets/icons/humidity.svg" alt="" />
+                <div
+                  class="to-be-loaded digit"
+                  data-type="periodic"
+                  data-period-type="current"
+                  data-definition="humidity"
+                ></div>
+              </div>
             </div>
+          </div>
         </div>
-        <div class="card-side-section">
-            <div class="top-side skeleton-section">
-                <div class="to-be-loaded text" class="to-be-loaded digit" data-type="general" data-definition="greeting"></div>
-                <div class="to-be-loaded text" data-type="general" data-definition="time"></div>
-            </div>
-            <div class="side-current-ctn skeleton-section">
-                <div class="to-be-loaded digit" data-type="periodic" data-period-type="current" data-definition="temperature"></div>
-                <div>Feels like <span class="feels-like to-be-loaded digit" data-type="periodic" data-period-type="current" data-definition="feels-like"></span></div>
-                <div class="to-be-loaded text" data-type="periodic" data-period-type="current" data-definition="condition"></div>
-            </div>
-            <div class="side-hourly-ctn skeleton-section">
-                <div>Hourly Forcast</div>
-                <div class="hourly-grid">
-                    <div class="hourly-card">
-                        <div class="to-be-loaded text" data-type="periodic" data-period-type="hourly" data-period-index="0" data-definition="hour"></div>
-                        <div class="to-be-loaded digit" data-type="periodic" data-period-type="hourly" data-period-index="0" data-definition="temperature"></div>
-                        <div class="to-be-loaded text" data-type="periodic" data-period-type="hourly" data-period-index="0" data-definition="condition"></div>
-                    </div>
-                    <div class="hourly-card">
-                        <div class="to-be-loaded text" data-type="periodic" data-period-type="hourly" data-period-index="1" data-definition="hour"></div>
-                        <div class="to-be-loaded digit" data-type="periodic" data-period-type="hourly" data-period-index="1" data-definition="temperature"></div>
-                        <div class="to-be-loaded text" data-type="periodic" data-period-type="hourly" data-period-index="1" data-definition="condition"></div>
-                    </div>
-                    <div class="hourly-card">
-                        <div class="to-be-loaded text" data-type="periodic" data-period-type="hourly" data-period-index="2" data-definition="hour"></div>
-                        <div class="to-be-loaded digit" data-type="periodic" data-period-type="hourly" data-period-index="2" data-definition="temperature"></div>
-                        <div class="to-be-loaded text" data-type="periodic" data-period-type="hourly" data-period-index="2" data-definition="condition"></div>
-                    </div>
-                    <div class="hourly-card">
-                        <div class="to-be-loaded text" data-type="periodic" data-period-type="hourly" data-period-index="3" data-definition="hour"></div>
-                        <div class="to-be-loaded digit" data-type="periodic" data-period-type="hourly" data-period-index="3" data-definition="temperature"></div>
-                        <div class="to-be-loaded text" data-type="periodic" data-period-type="hourly" data-period-index="3" data-definition="condition"></div>
-                    </div>
-                    <div class="hourly-card">
-                        <div class="to-be-loaded text" data-type="periodic" data-period-type="hourly" data-period-index="4" data-definition="hour"></div>
-                        <div class="to-be-loaded digit" data-type="periodic" data-period-type="hourly" data-period-index="4" data-definition="temperature"></div>
-                        <div class="to-be-loaded text" data-type="periodic" data-period-type="hourly" data-period-index="4" data-definition="condition"></div>
-                    </div>
-                    <div class="hourly-card">
-                        <div class="to-be-loaded text" data-type="periodic" data-period-type="hourly" data-period-index="5" data-definition="hour"></div>
-                        <div class="to-be-loaded digit" data-type="periodic" data-period-type="hourly" data-period-index="5" data-definition="temperature"></div>
-                        <div class="to-be-loaded text" data-type="periodic" data-period-type="hourly" data-period-index="5" data-definition="condition"></div>
-                    </div>
-                </div>
-            </div>
+        <div class="card-bottom skeleton-section">
+          <div class="current upcoming-days-ctn">
+            <div
+              class="to-be-loaded text"
+              data-type="periodic"
+              data-period-type="daily"
+              data-period-index="0"
+              data-definition="day"
+            ></div>
+            <div
+              class="to-be-loaded digit"
+              data-type="periodic"
+              data-period-type="daily"
+              data-period-index="0"
+              data-definition="temperature"
+            ></div>
+            <div
+              class="to-be-loaded text"
+              data-type="periodic"
+              data-period-type="daily"
+              data-period-index="0"
+              data-definition="condition"
+            ></div>
+          </div>
+          <div class="upcoming-days-ctn">
+            <div
+              class="to-be-loaded text"
+              data-type="periodic"
+              data-period-type="daily"
+              data-period-index="1"
+              data-definition="day"
+            ></div>
+            <div
+              class="to-be-loaded digit"
+              data-type="periodic"
+              data-period-type="daily"
+              data-period-index="1"
+              data-definition="temperature"
+            ></div>
+            <div
+              class="to-be-loaded text"
+              data-type="periodic"
+              data-period-type="daily"
+              data-period-index="1"
+              data-definition="condition"
+            ></div>
+          </div>
+          <div class="upcoming-days-ctn">
+            <div
+              class="to-be-loaded text"
+              data-type="periodic"
+              data-period-type="daily"
+              data-period-index="2"
+              data-definition="day"
+            ></div>
+            <div
+              class="to-be-loaded digit"
+              data-type="periodic"
+              data-period-type="daily"
+              data-period-index="2"
+              data-definition="temperature"
+            ></div>
+            <div
+              class="to-be-loaded text"
+              data-type="periodic"
+              data-period-type="daily"
+              data-period-index="2"
+              data-definition="condition"
+            ></div>
+          </div>
+          <div class="upcoming-days-ctn">
+            <div
+              class="to-be-loaded text"
+              data-type="periodic"
+              data-period-type="daily"
+              data-period-index="3"
+              data-definition="day"
+            ></div>
+            <div
+              class="to-be-loaded digit"
+              data-type="periodic"
+              data-period-type="daily"
+              data-period-index="3"
+              data-definition="temperature"
+            ></div>
+            <div
+              class="to-be-loaded text"
+              data-type="periodic"
+              data-period-type="daily"
+              data-period-index="3"
+              data-definition="condition"
+            ></div>
+          </div>
+          <div class="upcoming-days-ctn">
+            <div
+              class="to-be-loaded text"
+              data-type="periodic"
+              data-period-type="daily"
+              data-period-index="4"
+              data-definition="day"
+            ></div>
+            <div
+              class="to-be-loaded digit"
+              data-type="periodic"
+              data-period-type="daily"
+              data-period-index="4"
+              data-definition="temperature"
+            ></div>
+            <div
+              class="to-be-loaded text"
+              data-type="periodic"
+              data-period-type="daily"
+              data-period-index="4"
+              data-definition="condition"
+            ></div>
+          </div>
+          <div class="upcoming-days-ctn">
+            <div
+              class="to-be-loaded text"
+              data-type="periodic"
+              data-period-type="daily"
+              data-period-index="5"
+              data-definition="day"
+            ></div>
+            <div
+              class="to-be-loaded digit"
+              data-type="periodic"
+              data-period-type="daily"
+              data-period-index="5"
+              data-definition="temperature"
+            ></div>
+            <div
+              class="to-be-loaded text"
+              data-type="periodic"
+              data-period-type="daily"
+              data-period-index="5"
+              data-definition="condition"
+            ></div>
+          </div>
         </div>
+      </div>
+      <div class="card-side-section">
+        <div class="top-side skeleton-section">
+          <div
+            class="to-be-loaded text"
+            class="to-be-loaded digit"
+            data-type="general"
+            data-definition="greeting"
+          ></div>
+          <div
+            class="to-be-loaded text"
+            data-type="general"
+            data-definition="time"
+          ></div>
+        </div>
+        <div class="side-current-ctn skeleton-section">
+          <div
+            class="to-be-loaded digit"
+            data-type="periodic"
+            data-period-type="current"
+            data-definition="temperature"
+          ></div>
+          <div>
+            Feels like
+            <span
+              class="feels-like to-be-loaded digit"
+              data-type="periodic"
+              data-period-type="current"
+              data-definition="feels-like"
+            ></span>
+          </div>
+          <div
+            class="to-be-loaded text"
+            data-type="periodic"
+            data-period-type="current"
+            data-definition="condition"
+          ></div>
+        </div>
+        <div class="side-hourly-ctn skeleton-section">
+          <div>Hourly Forcast</div>
+          <div class="hourly-grid">
+            <div class="hourly-card">
+              <div
+                class="to-be-loaded text"
+                data-type="periodic"
+                data-period-type="hourly"
+                data-period-index="0"
+                data-definition="hour"
+              ></div>
+              <div
+                class="to-be-loaded digit"
+                data-type="periodic"
+                data-period-type="hourly"
+                data-period-index="0"
+                data-definition="temperature"
+              ></div>
+              <div
+                class="to-be-loaded text"
+                data-type="periodic"
+                data-period-type="hourly"
+                data-period-index="0"
+                data-definition="condition"
+              ></div>
+            </div>
+            <div class="hourly-card">
+              <div
+                class="to-be-loaded text"
+                data-type="periodic"
+                data-period-type="hourly"
+                data-period-index="1"
+                data-definition="hour"
+              ></div>
+              <div
+                class="to-be-loaded digit"
+                data-type="periodic"
+                data-period-type="hourly"
+                data-period-index="1"
+                data-definition="temperature"
+              ></div>
+              <div
+                class="to-be-loaded text"
+                data-type="periodic"
+                data-period-type="hourly"
+                data-period-index="1"
+                data-definition="condition"
+              ></div>
+            </div>
+            <div class="hourly-card">
+              <div
+                class="to-be-loaded text"
+                data-type="periodic"
+                data-period-type="hourly"
+                data-period-index="2"
+                data-definition="hour"
+              ></div>
+              <div
+                class="to-be-loaded digit"
+                data-type="periodic"
+                data-period-type="hourly"
+                data-period-index="2"
+                data-definition="temperature"
+              ></div>
+              <div
+                class="to-be-loaded text"
+                data-type="periodic"
+                data-period-type="hourly"
+                data-period-index="2"
+                data-definition="condition"
+              ></div>
+            </div>
+            <div class="hourly-card">
+              <div
+                class="to-be-loaded text"
+                data-type="periodic"
+                data-period-type="hourly"
+                data-period-index="3"
+                data-definition="hour"
+              ></div>
+              <div
+                class="to-be-loaded digit"
+                data-type="periodic"
+                data-period-type="hourly"
+                data-period-index="3"
+                data-definition="temperature"
+              ></div>
+              <div
+                class="to-be-loaded text"
+                data-type="periodic"
+                data-period-type="hourly"
+                data-period-index="3"
+                data-definition="condition"
+              ></div>
+            </div>
+            <div class="hourly-card">
+              <div
+                class="to-be-loaded text"
+                data-type="periodic"
+                data-period-type="hourly"
+                data-period-index="4"
+                data-definition="hour"
+              ></div>
+              <div
+                class="to-be-loaded digit"
+                data-type="periodic"
+                data-period-type="hourly"
+                data-period-index="4"
+                data-definition="temperature"
+              ></div>
+              <div
+                class="to-be-loaded text"
+                data-type="periodic"
+                data-period-type="hourly"
+                data-period-index="4"
+                data-definition="condition"
+              ></div>
+            </div>
+            <div class="hourly-card">
+              <div
+                class="to-be-loaded text"
+                data-type="periodic"
+                data-period-type="hourly"
+                data-period-index="5"
+                data-definition="hour"
+              ></div>
+              <div
+                class="to-be-loaded digit"
+                data-type="periodic"
+                data-period-type="hourly"
+                data-period-index="5"
+                data-definition="temperature"
+              ></div>
+              <div
+                class="to-be-loaded text"
+                data-type="periodic"
+                data-period-type="hourly"
+                data-period-index="5"
+                data-definition="condition"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
