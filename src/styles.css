@@ -291,10 +291,8 @@ body .card .skeleton-section.loading > img, body .card .skeleton-section.loading
 
 .to-be-loaded.digit:empty::after {
     content: "00";
-    /* color: transparent; */
 }
 
 .to-be-loaded.text:empty::after {
     content: "Loading...";
-    /* color: transparent; */
 }
