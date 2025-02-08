@@ -117,7 +117,7 @@ div.current-details-ctn {
     position: relative;
 }
 
-.current-details-ctn .temperature::after {
+.current-details-ctn .temperature:not(:empty)::after {
     content: "\00B0";
     position: absolute;
 }
@@ -216,7 +216,7 @@ div.current-details-ctn {
     font-weight: 700;
 }
 
-.side-current-ctn > div:nth-child(1)::after, .feels-like::after {
+.side-current-ctn > div:nth-child(1)::after, .feels-like:not(:empty):after {
     content: "\00B0";
 }
 
@@ -263,7 +263,7 @@ div.current-details-ctn {
     font-size: 1.5rem;
 }
 
-.hourly-card > div:nth-child(2)::after {
+.hourly-card > div:nth-child(2):not(:empty):after {
     content: "\00B0";
 }
 
@@ -287,4 +287,14 @@ body .card .skeleton-section.loading > img, body .card .skeleton-section.loading
     100% {
         background-color: #E2E2E2;
     }
+}
+
+.to-be-loaded.digit:empty::after {
+    content: "00";
+    /* color: transparent; */
+}
+
+.to-be-loaded.text:empty::after {
+    content: "Loading...";
+    /* color: transparent; */
 }
