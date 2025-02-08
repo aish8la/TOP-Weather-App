@@ -10,7 +10,6 @@ const apiObj = {
         const location = this.locationString || "Male";
         return `${this.url}${location}?${unit}&key=${this.apiKey}`;
     },
-
 }
 
 export default async function simpleFetch() {
