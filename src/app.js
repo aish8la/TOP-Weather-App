@@ -13,11 +13,9 @@ const apiObj = {
     },
 }
 
-let weatherData = {};
-
 export default async function fetchWeather() {
     const weather = await fetch(apiObj.apiString());
-    weatherData = await weather.json();
+    const weatherData = await weather.json();
 
     const processedDataObj = processData(weatherData); 
     return processedDataObj;
