@@ -25,6 +25,7 @@ export default async function fetchWeather() {
         const weatherData = await weather.json();
     
         const processedDataObj = processData(weatherData); 
+        console.log(processedDataObj);
         return processedDataObj;
     } catch (error) {
         console.error(error);
@@ -36,29 +37,53 @@ function processData(parsedJSON) {
     const jsonObj = parsedJSON;
 
     const requiredData = {
-        address: jsonObj.resolvedAddress,
-        timezone: jsonObj.timezone,
-        currentConditions: {
-            conditions: jsonObj.currentConditions.conditions,
-            time: jsonObj.currentConditions.datetime,
-            datetime: new TZDate( fromUnixTime(jsonObj.currentConditions.datetimeEpoch) , jsonObj.timezone),
-            feelslike: jsonObj.currentConditions.feelslike,
-            humidity: jsonObj.currentConditions.humidity,
-            icon: jsonObj.currentConditions.icon,
-            temperature: jsonObj.currentConditions.temp,
-            windspeed: jsonObj.currentConditions.windspeed
+        general: {
+            address: jsonObj.resolvedAddress,
+            get currentTime() {
+                return new TZDate( new Date(), "Europe/London")
+            },
+            get time() {
+                return format(this.currentTime, "HH:mm:ss");
+            },
+            get date() {
+                return format(this.currentTime, "do MMMM yyyy");
+            },
+            get greeting() {
+                const hour = this.currentTime.getHours();
+                let greet = "Good ";
+                if(hour < 12) {
+                    greet += "Morning";
+                } else if (hour < 17) {
+                    greet += "Afternoon";
+                } else {
+                    greet += "Evening";
+                }
+                return greet;
+            }
         },
-        days: [],
-        hours: [],
+        
+        timezone: jsonObj.timezone,
+        current: {
+            'condition': jsonObj.currentConditions.conditions,
+            'time': jsonObj.currentConditions.datetime,
+            'datetime': new TZDate( fromUnixTime(jsonObj.currentConditions.datetimeEpoch) , jsonObj.timezone),
+            'feels-like': jsonObj.currentConditions.feelslike,
+            'humidity': jsonObj.currentConditions.humidity,
+            'weather-icon': jsonObj.currentConditions.icon,
+            'temperature': jsonObj.currentConditions.temp,
+            'wind-speed': jsonObj.currentConditions.windspeed
+        },
+        daily: [],
+        hourly: [],
     }
     
     for (let i = 0; i < 7; i++) {
         const newObj = {
-            date: jsonObj.days[i].datetime,
+            date: format(jsonObj.days[i].datetime, "iii"),
             temperature: jsonObj.days[i].temp,
-            conditions: jsonObj.days[i].conditions, 
+            condition: jsonObj.days[i].conditions, 
         }
-        requiredData.days.push(newObj);
+        requiredData.daily.push(newObj);
     }
 
     const dateTimeZone = new TZDate( fromUnixTime(jsonObj.currentConditions.datetimeEpoch) , jsonObj.timezone);
@@ -71,10 +96,10 @@ function processData(parsedJSON) {
             hour: jsonObj.days[dateIndex].hours[hourIndex].datetime,
             datetime: new TZDate( fromUnixTime(jsonObj.days[dateIndex].hours[hourIndex].datetimeEpoch) , jsonObj.timezone),
             temperature: jsonObj.days[dateIndex].hours[hourIndex].temp,
-            conditions: jsonObj.days[dateIndex].hours[hourIndex].conditions, 
+            condition: jsonObj.days[dateIndex].hours[hourIndex].conditions, 
         }
 
-        requiredData.hours.push(newObj);
+        requiredData.hourly.push(newObj);
 
         if ( hourIndex === 23) {
             dateIndex++;
