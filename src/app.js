@@ -11,6 +11,12 @@ const apiObj = {
         const location = this.locationString || "Male";
         return `${this.url}${location}?${unit}&key=${this.apiKey}`;
     },
+    changeUnit(unitGroup) {
+        this.unitGroup = unitGroup;
+    },
+    changeLocation(location) {
+        this.locationString = location;
+    }
 }
 
 export default async function fetchWeather() {
