@@ -5,7 +5,7 @@ const apiObj = {
     "url": "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/",
     "apiKey": "AQDDMAMVYVMQ3HDRU8QNG3XF3",
     "unitGroup": "metric",
-    "locationString": "India",
+    "locationString": "Male",
     apiString() {
         const unit = "unitGroup="+(this.unitGroup || "metric");
         const location = this.locationString || "Male";

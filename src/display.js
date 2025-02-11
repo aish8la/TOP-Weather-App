@@ -9,6 +9,7 @@ import { fetchWeather, changeLocation, changeUnit } from "./app.js";
 
 const getWeatherBtn = document.querySelector('#get-weather-btn');
 const searchBar = document.querySelector('#location-input');
+const unitSelection = document.querySelector('#unit-select');
 const dataElements = {
     'general': document.querySelectorAll('[data-type="general"]'),
     'current': document.querySelectorAll('[data-type="current"]'),
@@ -54,6 +55,7 @@ function toggleSkeleton() {
 };
 
 async function renderData() {
+    setUnitGroup();
     toggleSkeleton();
     const data = await fetchWeather();
     const icon = await getIconPath(data.current["weather-icon"]);
@@ -68,8 +70,14 @@ function getLocationWeather() {
     renderData();
 }
 
+function setUnitGroup() {
+    changeUnit(unitSelection.value);
+}
+
 export function initializeUI() {
 
+    renderData();
+    unitSelection.addEventListener('change', renderData);
     getWeatherBtn.addEventListener('click', getLocationWeather);
 
 };
