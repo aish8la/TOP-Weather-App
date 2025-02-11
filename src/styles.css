@@ -57,7 +57,7 @@ body {
 
 .card {
     width: auto;
-    height: 70vh;
+    min-height: 80vh;
     aspect-ratio: 5 / 2;
     border-radius: 30px;
     display: flex;
@@ -180,6 +180,7 @@ div.current-details-ctn {
 .upcoming-days-ctn > div:nth-child(3) {
     font-weight: 400;
     color: #b1b1b1;
+    padding: 0px 10px;
 }
 
 .card-side-section {
@@ -290,7 +291,7 @@ body .card .skeleton-section.loading > img, body .card .skeleton-section.loading
 }
 
 .to-be-loaded.digit:empty::after {
-    content: "00";
+    content: "00.0";
 }
 
 .to-be-loaded.text:empty::after {
