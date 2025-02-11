@@ -5,7 +5,7 @@ const apiObj = {
     "url": "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/",
     "apiKey": "AQDDMAMVYVMQ3HDRU8QNG3XF3",
     "unitGroup": "metric",
-    "locationString": "India",
+    "locationString": "Male",
     apiString() {
         const unit = "unitGroup="+(this.unitGroup || "metric");
         const location = this.locationString || "Male";
@@ -17,21 +17,21 @@ const apiObj = {
     changeLocation(location) {
         this.locationString = location;
     }
-}
+};
 
-export default async function fetchWeather() {
+export async function fetchWeather() {
     try {
         const weather = await fetch(apiObj.apiString());
         const weatherData = await weather.json();
-    
+        console.log(weatherData);
         const processedDataObj = processData(weatherData); 
-        console.log(processedDataObj);
+
         return processedDataObj;
     } catch (error) {
-        console.error(error);
-    }
+        console.log(error);
+    };
 
-}
+};
 
 function processData(parsedJSON) {
     const jsonObj = parsedJSON;
@@ -75,16 +75,16 @@ function processData(parsedJSON) {
         },
         daily: [],
         hourly: [],
-    }
+    };
     
     for (let i = 0; i < 7; i++) {
         const newObj = {
-            date: format(jsonObj.days[i].datetime, "iii"),
+            day: format(jsonObj.days[i].datetime, "iii"),
             temperature: jsonObj.days[i].temp,
             condition: jsonObj.days[i].conditions, 
         }
         requiredData.daily.push(newObj);
-    }
+    };
 
     const dateTimeZone = new TZDate( fromUnixTime(jsonObj.currentConditions.datetimeEpoch) , jsonObj.timezone);
     let dateIndex = 0;
@@ -93,8 +93,8 @@ function processData(parsedJSON) {
     for (let i = 0; i < 7; i++) {
 
         const newObj = {
-            hour: jsonObj.days[dateIndex].hours[hourIndex].datetime,
-            datetime: new TZDate( fromUnixTime(jsonObj.days[dateIndex].hours[hourIndex].datetimeEpoch) , jsonObj.timezone),
+            dateTime:jsonObj.days[dateIndex].hours[hourIndex].datetime,
+            hour: format(new TZDate( fromUnixTime(jsonObj.days[dateIndex].hours[hourIndex].datetimeEpoch) , jsonObj.timezone), "HH:mm"),
             temperature: jsonObj.days[dateIndex].hours[hourIndex].temp,
             condition: jsonObj.days[dateIndex].hours[hourIndex].conditions, 
         }
@@ -108,10 +108,10 @@ function processData(parsedJSON) {
         }
 
         hourIndex++;
-    }
+    };
 
     return requiredData;
 
-}
+};
 
 

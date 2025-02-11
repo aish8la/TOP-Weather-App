@@ -1,3 +1,4 @@
+import { fetchWeather } from "./app.js";
 
 // This is a method to dynamically import images using require.context
 // const icons = require.context('./assets/icons', false, /\.svg$/);
@@ -11,24 +12,52 @@ const weatherIconElement = document.querySelector('.weather-icon > img');
 const searchBar = document.querySelector('#location-input');
 const dataElements = {
     'general': document.querySelectorAll('[data-type="general"]'),
-    'periodic': document.querySelectorAll('[data-type="periodic"][data-period-type="current"]'),
-}
+    'current': document.querySelectorAll('[data-type="current"]'),
+    'periodic': document.querySelectorAll('[data-type="periodic"]'),
+    'weather-icon': document.querySelector('[data-definition="weather-icon"][data-type="current"]')
+};
 
-console.log(dataElements);
+export function updateDisplay(dataObj, iconURL) {
+
+    dataElements["weather-icon"].src = iconURL;
+
+    dataElements.general.forEach(element => {
+        element.textContent = dataObj.general[element.dataset.definition];
+    });
+
+    dataElements.current.forEach(element => {
+        if (element.tagName === "IMG") {
+            return;
+        }
+        element.textContent = dataObj.current[element.dataset.definition];
+    });
+
+    dataElements.periodic.forEach(element => {
+        const periodType = element.dataset.periodType;
+        const periodIndex = element.dataset.periodIndex;
+        const definition = element.dataset.definition;
+        element.textContent = dataObj[periodType][periodIndex][definition];
+    });
+};
+
 
 //This is a method to dynamically import icons using JS dynamic import()
 async function getIconPath(iconName) {
     const iconPromise = await import(`./assets/icons/${iconName}.svg`);
     return await iconPromise.default; 
-}
+};
 
+async function renderData() {
+    const data = await fetchWeather();
+    const icon = await getIconPath(data.current["weather-icon"]);
+    updateDisplay(data, icon);
+};
 
+export function initializeUI() {
 
-export function initializeUI(fetchFunc) {
+    getWeatherBtn.addEventListener('click', renderData);
 
-    getWeatherBtn.addEventListener('click', fetchFunc);
-
-}
+};
 
 
 
