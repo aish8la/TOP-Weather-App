@@ -5,7 +5,7 @@ const apiObj = {
     "url": "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/",
     "apiKey": "AQDDMAMVYVMQ3HDRU8QNG3XF3",
     "unitGroup": "metric",
-    "locationString": "Male",
+    "locationString": "India",
     apiString() {
         const unit = "unitGroup="+(this.unitGroup || "metric");
         const location = this.locationString || "Male";
@@ -23,9 +23,8 @@ export async function fetchWeather() {
     try {
         const weather = await fetch(apiObj.apiString());
         const weatherData = await weather.json();
-        console.log(weatherData);
         const processedDataObj = processData(weatherData); 
-
+        console.log(weatherData);
         return processedDataObj;
     } catch (error) {
         console.log(error);
@@ -76,6 +75,8 @@ function processData(parsedJSON) {
         daily: [],
         hourly: [],
     };
+
+    
     
     for (let i = 0; i < 7; i++) {
         const newObj = {
@@ -88,7 +89,7 @@ function processData(parsedJSON) {
 
     const dateTimeZone = new TZDate( fromUnixTime(jsonObj.currentConditions.datetimeEpoch) , jsonObj.timezone);
     let dateIndex = 0;
-    let hourIndex = new Number(format(dateTimeZone, "HH"));
+    let hourIndex = Number(format(dateTimeZone, "HH"));
 
     for (let i = 0; i < 7; i++) {
 
