@@ -1,10 +1,4 @@
 import "./styles.css";
-import { initializeUI } from './display.js';
+import { initializeUI } from "./display.js";
 
 initializeUI();
-
-  
-
-
-
-
