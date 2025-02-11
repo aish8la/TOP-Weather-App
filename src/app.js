@@ -11,12 +11,14 @@ const apiObj = {
         const location = this.locationString || "Male";
         return `${this.url}${location}?${unit}&key=${this.apiKey}`;
     },
-    changeUnit(unitGroup) {
-        this.unitGroup = unitGroup;
-    },
-    changeLocation(location) {
-        this.locationString = location;
-    }
+};
+
+export function changeUnit(unitGroup) {
+    apiObj.unitGroup = unitGroup;
+};
+
+export function changeLocation(location) {
+    apiObj.locationString = location;
 };
 
 export async function fetchWeather() {
@@ -114,5 +116,3 @@ function processData(parsedJSON) {
     return requiredData;
 
 };
-
-

@@ -1,4 +1,4 @@
-import { fetchWeather } from "./app.js";
+import { fetchWeather, changeLocation, changeUnit } from "./app.js";
 
 // This is a method to dynamically import images using require.context
 // const icons = require.context('./assets/icons', false, /\.svg$/);
@@ -56,15 +56,21 @@ function toggleSkeleton() {
 async function renderData() {
     toggleSkeleton();
     const data = await fetchWeather();
-    console.log(data.current["weather-icon"]);
     const icon = await getIconPath(data.current["weather-icon"]);
     updateDisplay(data, icon);
     toggleSkeleton();
 };
 
+function getLocationWeather() {
+    const searchString = searchBar.value;
+    searchBar.value = "";
+    changeLocation(searchString);
+    renderData();
+}
+
 export function initializeUI() {
 
-    getWeatherBtn.addEventListener('click', renderData);
+    getWeatherBtn.addEventListener('click', getLocationWeather);
 
 };
 
