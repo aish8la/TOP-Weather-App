@@ -272,12 +272,12 @@ div.current-details-ctn {
     color: #b1b1b1;
 }
 
-body .card .skeleton-section.loading {
+body .card .to-be-loaded.loading {
     animation: skeleton-loading 1s linear infinite alternate;
     color: transparent;
 }
 
-body .card .skeleton-section.loading > img, body .card .skeleton-section.loading div{
+body .card .to-be-loaded.loading > img, body .card .to-be-loaded.loading div{
     visibility: hidden;
 }
 

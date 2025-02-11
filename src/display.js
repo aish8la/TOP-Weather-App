@@ -8,13 +8,13 @@ import { fetchWeather } from "./app.js";
 
 
 const getWeatherBtn = document.querySelector('#get-weather-btn');
-const weatherIconElement = document.querySelector('.weather-icon > img');
 const searchBar = document.querySelector('#location-input');
 const dataElements = {
     'general': document.querySelectorAll('[data-type="general"]'),
     'current': document.querySelectorAll('[data-type="current"]'),
     'periodic': document.querySelectorAll('[data-type="periodic"]'),
-    'weather-icon': document.querySelector('[data-definition="weather-icon"][data-type="current"]')
+    'weather-icon': document.querySelector('[data-definition="weather-icon"][data-type="current"]'),
+    'skeletonElements': document.querySelectorAll('.to-be-loaded')
 };
 
 export function updateDisplay(dataObj, iconURL) {
@@ -47,10 +47,19 @@ async function getIconPath(iconName) {
     return await iconPromise.default; 
 };
 
+function toggleSkeleton() {
+    dataElements.skeletonElements.forEach(elements => {
+        elements.classList.toggle('loading');
+    });
+};
+
 async function renderData() {
+    toggleSkeleton();
     const data = await fetchWeather();
+    console.log(data.current["weather-icon"]);
     const icon = await getIconPath(data.current["weather-icon"]);
     updateDisplay(data, icon);
+    toggleSkeleton();
 };
 
 export function initializeUI() {
