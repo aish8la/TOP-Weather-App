@@ -55,6 +55,7 @@ function toggleSkeleton() {
 
 async function renderData() {
   setUnitGroup();
+  dataElements["weather-icon"].src = "";
   toggleSkeleton();
   const data = await fetchWeather();
   const icon = await getIconPath(data.current["weather-icon"]);
